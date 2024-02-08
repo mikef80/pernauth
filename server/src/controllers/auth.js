@@ -34,12 +34,34 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   let user = req.user;
   let payload = { id: user.user_id, email: user.email };
+
   try {
-    const token = await sign(payload, SECRET);
+    const token = sign(payload, SECRET);
+
     return res
       .status(200)
       .cookie("token", token, { httpOnly: true })
       .send({ success: true, message: "Logged in successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.send(500).send({ error: error.message });
+  }
+};
+
+exports.protected = async (req, res) => {
+  try {
+    return res.status(200).send({ info: "protected info" });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    return res
+      .status(200)
+      .clearCookie("token", { httpOnly: true })
+      .send({ success: true, message: "Logged out successfully" });
   } catch (error) {
     console.log(error.message);
     res.send(500).send({ error: error.message });

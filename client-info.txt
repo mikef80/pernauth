@@ -1,0 +1,20 @@
+Pern authentication system
+PERN (postgresql, express, react, nodejs)
+
+Tech notes:
+Bootstrap for styles
+React router - app navigation
+Redux toolkit - state management
+
+Workflow:
+Note about two changes in the backend
+Clean all unnecessary files and structure the project
+Connect Bootstrap
+Install all needed packages (axios, react-router-dom)
+Create pages folder with all the pages
+Create all routes inside the app folder
+Create components for private and resatricted routes
+Create components folder with navbar and layout
+Structure the redux folders and create auth slice with reducers
+Create auth api functions to communicate with the backend
+Complete the functionality for register, login, logout and dashboard pages

@@ -1,11 +1,7 @@
-const { validationResult } = require("express-validator");
+const passport = require("passport");
 
-exports.validationMiddleware = (req, res, next) => {
-  let errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(400).send({ errors: errors.array() });
-  }
-
-  next();
-};
+exports.userAuth = passport.authenticate("jwt", { session: false });
+/* exports.userAuth = () => {
+  console.log('here');
+  return passport.authenticate("jwt", { session: false });
+}; */
